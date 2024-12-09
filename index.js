@@ -1,4 +1,4 @@
-import { createClient } from "@supabase/supabase-js";
+import { createClient } from "https://esm.sh/@supabase/supabase-js";
 
 const supabaseUrl = "https://exinlvevcsfxjbnnrqif.supabase.co";
 const supabaseKey =
@@ -165,7 +165,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 font-family: 'Roboto', sans-serif;
                 margin: 0;
                 padding: 20px;
-                padding-top: 50px;
+                padding-top: 70px;
                 background-color: #f5f5f5;
             }
             .tabs {
@@ -373,6 +373,27 @@ document.addEventListener("DOMContentLoaded", () => {
             }
             .remove-set-btn:hover {
                 background-color: #cc0000;
+            }
+            .navbar {
+                background: #2196f3;
+                padding: 15px;
+                color: white;
+                position: fixed;
+                top: 0;
+                left: 0;
+                right: 0;
+                z-index: 1000;
+            }
+            
+            .nav-link {
+                color: white;
+                text-decoration: none;
+                padding: 8px 16px;
+                border-radius: 4px;
+            }
+            
+            .nav-link:hover {
+                background: rgba(255,255,255,0.1);
             }
         </style>
     `;
@@ -682,8 +703,20 @@ document.addEventListener("DOMContentLoaded", () => {
     return toggleDiv;
   };
 
+  // Add this function to create the navbar
+  const createNavbar = () => {
+    const navbar = document.createElement("div");
+    navbar.className = "navbar";
+    navbar.innerHTML = `
+      <a href="/" class="nav-link">Home</a>
+      <a href="/workout-history/workout-history.html" class="nav-link">History</a>
+    `;
+    return navbar;
+  };
+
   // Initialize app
   app.innerHTML = styles;
+  app.appendChild(createNavbar());
   app.appendChild(createApiToggle());
   app.appendChild(createTabs());
   const workoutDiv = document.createElement("div");
