@@ -395,25 +395,25 @@ document.addEventListener("DOMContentLoaded", () => {
     },
   };
 
-  // Update LOCAL_GIFS with the verified URLs I've found
+  // Update LOCAL_GIFS with repository-relative paths
   const LOCAL_GIFS = {
-    "resistance cycling": "/assets/gifs/stationary-bike.gif",
-    "backward incline walk": "/assets/gifs/treadmill-walk.gif",
-    "pull-ups": "/assets/gifs/pull-up.gif",
-    "bench press": "/assets/gifs/bench-press.gif",
-    rows: "/assets/gifs/barbell-row.gif",
-    "shoulder press": "/assets/gifs/shoulder-press.gif",
-    "bicep curls": "/assets/gifs/bicep-curl.gif",
-    "tricep dips": "/assets/gifs/tricep-dip.gif",
-    plank: "/assets/gifs/plank.gif",
-    "russian twists": "/assets/gifs/russian-twist.gif",
-    "incline bench press": "/assets/gifs/incline-bench-press.gif",
-    "lat pulldowns": "/assets/gifs/lat-pulldown.gif",
-    "lateral raises": "/assets/gifs/lateral-raise.gif",
-    "face pulls": "/assets/gifs/face-pull.gif",
-    "hammer curls": "/assets/gifs/hammer-curl.gif",
-    "overhead tricep extensions": "/assets/gifs/overhead-tricep-extension.gif",
-    "side planks": "/assets/gifs/side-plank.gif",
+    "resistance cycling": "./assets/gifs/stationary-bike.gif",
+    "backward incline walk": "./assets/gifs/treadmill-walk.gif",
+    "pull-ups": "./assets/gifs/pull-up.gif",
+    "bench press": "./assets/gifs/bench-press.gif",
+    rows: "./assets/gifs/barbell-row.gif",
+    "shoulder press": "./assets/gifs/shoulder-press.gif",
+    "bicep curls": "./assets/gifs/bicep-curl.gif",
+    "tricep dips": "./assets/gifs/tricep-dip.gif",
+    plank: "./assets/gifs/plank.gif",
+    "russian twists": "./assets/gifs/russian-twist.gif",
+    "incline bench press": "./assets/gifs/incline-bench-press.gif",
+    "lat pulldowns": "./assets/gifs/lat-pulldown.gif",
+    "lateral raises": "./assets/gifs/lateral-raise.gif",
+    "face pulls": "./assets/gifs/face-pull.gif",
+    "hammer curls": "./assets/gifs/hammer-curl.gif",
+    "overhead tricep extensions": "./assets/gifs/overhead-tricep-extension.gif",
+    "side planks": "./assets/gifs/side-plank.gif",
   };
 
   // Function to save gif to local storage
