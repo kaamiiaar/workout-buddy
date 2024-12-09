@@ -79,8 +79,8 @@ document.addEventListener("DOMContentLoaded", async () => {
   // Add navbar
   const navbar = `
     <div class="navbar">
-      <a href="/" class="nav-link">Home</a>
-      <a href="/workout-history/workout-history.html" class="nav-link">History</a>
+      <a href="../index.html" class="nav-link">Home</a>
+      <a href="./workout-history.html" class="nav-link">History</a>
     </div>
   `;
 

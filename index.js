@@ -672,7 +672,7 @@ document.addEventListener("DOMContentLoaded", () => {
           if (error) throw error;
 
           // Redirect to congrats page after successful save
-          window.location.href = "congrats/congrats.html";
+          window.location.href = "./congrats/congrats.html";
         } catch (error) {
           console.error("Error saving workout:", error);
           alert("Failed to save workout data. Please try again.");
@@ -708,8 +708,8 @@ document.addEventListener("DOMContentLoaded", () => {
     const navbar = document.createElement("div");
     navbar.className = "navbar";
     navbar.innerHTML = `
-      <a href="/" class="nav-link">Home</a>
-      <a href="workout-history/workout-history.html" class="nav-link"
+      <a href="./index.html" class="nav-link">Home</a>
+      <a href="./workout-history/workout-history.html" class="nav-link"
         >History</a
       >
     `;

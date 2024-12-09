@@ -52,7 +52,7 @@ document.addEventListener("DOMContentLoaded", () => {
             <div class="message">
                 You've completed your workout for today. Keep up the great work!
             </div>
-            <button class="home-button" onclick="window.location.href='../'">Back to Workouts</button>
+            <button class="home-button" onclick="window.location.href='../index.html'">Back to Workouts</button>
         </div>
     `;
 
