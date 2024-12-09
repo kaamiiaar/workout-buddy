@@ -709,7 +709,9 @@ document.addEventListener("DOMContentLoaded", () => {
     navbar.className = "navbar";
     navbar.innerHTML = `
       <a href="/" class="nav-link">Home</a>
-      <a href="/workout-history/workout-history.html" class="nav-link">History</a>
+      <a href="workout-history/workout-history.html" class="nav-link"
+        >History</a
+      >
     `;
     return navbar;
   };
