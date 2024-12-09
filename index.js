@@ -1,3 +1,10 @@
+import { createClient } from "@supabase/supabase-js";
+
+const supabaseUrl = "https://exinlvevcsfxjbnnrqif.supabase.co";
+const supabaseKey =
+  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImV4aW5sdmV2Y3NmeGpibm5ycWlmIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MzM3MzAzMzYsImV4cCI6MjA0OTMwNjMzNn0.MqJHq9NSp9hHkkkyWHJfs4c56Abi46idBNdGd07_nWU";
+const supabase = createClient(supabaseUrl, supabaseKey);
+
 document.addEventListener("DOMContentLoaded", () => {
   // Create a reusable workout plan
   const upperBodyWorkout = [
@@ -609,8 +616,46 @@ document.addEventListener("DOMContentLoaded", () => {
       });
 
       // Handle workout completion
-      doneButton.addEventListener("click", () => {
-        window.location.href = "congrats/congrats.html";
+      doneButton.addEventListener("click", async () => {
+        // Collect all exercise data
+        const exercises = Array.from(
+          workoutDiv.querySelectorAll(".exercise")
+        ).map((exerciseDiv) => {
+          const name = exerciseDiv.querySelector(".exercise-name").textContent;
+          const sets = Array.from(exerciseDiv.querySelectorAll(".set-row")).map(
+            (setRow) => ({
+              setNumber: parseInt(
+                setRow.querySelector("span").textContent.match(/\d+/)[0]
+              ),
+              repsCompleted: setRow.querySelector(".rep-input").value,
+            })
+          );
+
+          return {
+            exercise_name: name,
+            sets_completed: sets,
+            completed_at: new Date().toISOString(),
+          };
+        });
+
+        try {
+          // Insert workout data into Supabase
+          const { data, error } = await supabase
+            .from("completed_workouts")
+            .insert({
+              workout_date: new Date().toISOString(),
+              workout_day: document.querySelector(".tab.active").textContent,
+              exercises: exercises,
+            });
+
+          if (error) throw error;
+
+          // Redirect to congrats page after successful save
+          window.location.href = "congrats/congrats.html";
+        } catch (error) {
+          console.error("Error saving workout:", error);
+          alert("Failed to save workout data. Please try again.");
+        }
       });
 
       workoutDiv.appendChild(doneButton);
