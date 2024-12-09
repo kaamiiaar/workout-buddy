@@ -73,6 +73,21 @@ document.addEventListener("DOMContentLoaded", async () => {
       .nav-link:hover {
         background: rgba(255,255,255,0.1);
       }
+      
+      .delete-btn {
+        background-color: #ff4444;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        padding: 8px 16px;
+        cursor: pointer;
+        margin-top: 10px;
+        transition: background-color 0.3s;
+      }
+      
+      .delete-btn:hover {
+        background-color: #cc0000;
+      }
     </style>
   `;
 
@@ -133,7 +148,29 @@ document.addEventListener("DOMContentLoaded", async () => {
             )
             .join("")}
         </div>
+        <button class="delete-btn" data-workout-id="${
+          workout.id
+        }">Delete</button>
       `;
+
+      // Add event listener for delete button
+      const deleteBtn = workoutCard.querySelector(".delete-btn");
+      deleteBtn.addEventListener("click", async () => {
+        if (confirm("Are you sure you want to delete this workout?")) {
+          try {
+            const { error } = await supabase
+              .from("completed_workouts")
+              .delete()
+              .eq("id", workout.id);
+
+            if (error) throw error;
+            workoutCard.remove();
+          } catch (error) {
+            console.error("Error deleting workout:", error);
+            alert("Failed to delete workout. Please try again.");
+          }
+        }
+      });
 
       historyContainer.appendChild(workoutCard);
     });
